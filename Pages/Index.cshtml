@@ -1,0 +1,39 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container">
+    <form method="post" class="card p-4">
+        <div class="form-group mb-3">
+            <label for="CurrentAge" class="form-label">Lower Range of Numbers</label>
+            <input asp-for="NumberInput.LowerNumber" class="form-control" type="number" id="LowerNumber" />
+            <span asp-validation-for="NumberInput.LowerNumber" class="text-danger"></span>
+           
+        </div>
+        <div class="form-group mb-3">
+            <label for="RetirementAge" class="form-label">Upper Range of Numbers</label>
+            <input asp-for="NumberInput.UpperNumber" class="form-control" type="number" id="UpperNumber" />
+            <span asp-validation-for="NumberInput.UpperNumber" class="text-danger"></span>
+      
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </div>
+        
+    </form>
+
+   @if (Model.NumberOutput != null)
+    {
+        <div class="card mt-4 p-4">
+            <h3 class="text-center">Result</h3>
+            <p>The numbers are: <strong>@Model.NumberOutput.GoldyGopherString</strong></p>
+        </div>
+    }
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
